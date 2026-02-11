@@ -16,7 +16,7 @@ public class BaseTest {
     MainPage mainPage;
     LoginPage loginPage;
     DessertsPage dessertsPage;
-SearchResultsPage searchResultsPage;
+    SearchResultsPage searchResultsPage;
 
     @BeforeMethod
     @Step("Открыть браузер")
