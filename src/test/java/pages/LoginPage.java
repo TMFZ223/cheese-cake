@@ -19,6 +19,7 @@ public class LoginPage implements BasePage {
         withLogin.click();
     }
 
+    @Step("Выполнить вход в систему")
     public void login(User user) {
         enterLogin(user.getLogin());
         enterPassword(user.getPassword());
