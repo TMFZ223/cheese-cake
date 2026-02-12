@@ -10,7 +10,7 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
 public class SearchResultsPage implements BasePage {
-    private final ElementsCollection results = $$(CLASS_PATTERN.formatted("card cc-card-product border-0"));
+    private final ElementsCollection results = $$(CLASS_PATTERN.formatted("card-title-under-img pt-1"));
     private final SelenideElement noResultsElement = $(CLASS_PATTERN.formatted("item-message-info message-on-page"));
 
     @Step("Убедиться, что после поиска существующих десертов список результатов содержит1 или более элементов")
