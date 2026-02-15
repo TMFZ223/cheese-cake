@@ -18,8 +18,8 @@ public class MainPage implements BasePage {
     @Step("Перейти по ссылке входа в личный кабинет")
     public void goLoginLink() {
         if (acceptCity.exists()) {
-            acceptCity.click();
+            clickIn(acceptCity);
         }
-        loginLink.click();
+        clickIn(loginLink);
     }
 }

@@ -3,7 +3,6 @@ package pages;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 
-import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
 
@@ -14,17 +13,16 @@ public class DessertsPage implements BasePage {
 
     @Step("Убедиться, что на странице отображается имя пользователя {expectedUserName}")
     public void checkUserName(String expectedUserName) {
-        userName.shouldBe(visible)
-                .shouldHave(exactText(expectedUserName));
+        checkexactTextIn(userName, expectedUserName);
     }
 
     @Step("Ввести в поле поиска значения {dessertName}")
     public void enterDessertName(String dessertName) {
-        searchInput.setValue(dessertName);
+        setValueIn(searchInput, dessertName);
     }
 
     @Step("Нажать на кнопку поиска")
     public void clickSearchButton() {
-        searchButton.click();
+        clickIn(searchButton);
     }
 }
