@@ -4,8 +4,6 @@ import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 
-import static com.codeborne.selenide.CollectionCondition.*;
-import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
@@ -15,15 +13,11 @@ public class SearchResultsPage implements BasePage {
 
     @Step("Убедиться, что после поиска существующих десертов список результатов содержит1 или более элементов")
     public void checkQuantityDessertsSearchList() {
-        results.shouldHave(sizeGreaterThanOrEqual(1));
-        for (SelenideElement result : results) {
-            result.shouldBe(visible);
-        }
+        checkSizeIn(results);
     }
 
     @Step("Убедиться, что при отсутствии результатов поиска отображается сообщение {expectedMessage}")
     public void checkNoResultMessage(String expectedMessage) {
-        noResultsElement.shouldBe(visible)
-                .shouldHave(exactText(expectedMessage));
+        checkExactTextIn(noResultsElement, expectedMessage);
     }
 }

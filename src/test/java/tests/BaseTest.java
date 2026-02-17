@@ -10,7 +10,6 @@ import pages.DessertsPage;
 import pages.LoginPage;
 import pages.MainPage;
 import pages.SearchResultsPage;
-import utils.PropertyReader;
 
 public class BaseTest {
     MainPage mainPage;
