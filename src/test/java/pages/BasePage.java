@@ -3,7 +3,6 @@ package pages;
 import com.codeborne.selenide.*;
 import io.qameta.allure.Attachment;
 import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 import utils.PropertyReader;
 
 import static com.codeborne.selenide.CollectionCondition.*;
@@ -24,10 +23,10 @@ public interface BasePage {
         takeScreenshot();
     }
 
-    default void checkexactTextIn(SelenideElement element, String text) {
-        element.shouldBe(visible)
-                .shouldHave(exactTextCaseSensitive(text))
-                .highlight();
+    default void checkExactTextIn(SelenideElement element, String text) {
+        element.highlight()
+                .shouldBe(visible)
+                .shouldHave(exactTextCaseSensitive(text));
         takeScreenshot();
     }
 
@@ -40,7 +39,6 @@ public interface BasePage {
 
     @Attachment(value = "screenshot", type = "image/png")
     private static byte[] takeScreenshot() {
-        return ((TakesScreenshot) WebDriverRunner.getWebDriver())
-                .getScreenshotAs(OutputType.BYTES);
+        return (Selenide.screenshot(OutputType.BYTES));
     }
 }

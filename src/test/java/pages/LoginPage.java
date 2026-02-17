@@ -43,6 +43,6 @@ public class LoginPage implements BasePage {
 
     @Step("Убедиться, что показан текст ошибки {expectedError}")
     public void checkError(String expectedError) {
-        checkexactTextIn(autharizationError, expectedError);
+        checkExactTextIn(autharizationError, expectedError);
     }
 }

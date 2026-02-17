@@ -15,7 +15,7 @@ public class LoginTest extends BaseTest {
         mainPage.goLoginLink();
         loginPage.clickWithLogin();
         loginPage.login(UserFactory.withCorrectCredantials());
-        dessertsPage.checkUserName("your name after login");
+        dessertsPage.checkUserName("Роберт");
     }
 
     @DataProvider

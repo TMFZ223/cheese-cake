@@ -18,6 +18,6 @@ public class SearchResultsPage implements BasePage {
 
     @Step("Убедиться, что при отсутствии результатов поиска отображается сообщение {expectedMessage}")
     public void checkNoResultMessage(String expectedMessage) {
-        checkexactTextIn(noResultsElement, expectedMessage);
+        checkExactTextIn(noResultsElement, expectedMessage);
     }
 }

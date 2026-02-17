@@ -13,7 +13,7 @@ public class DessertsPage implements BasePage {
 
     @Step("Убедиться, что на странице отображается имя пользователя {expectedUserName}")
     public void checkUserName(String expectedUserName) {
-        checkexactTextIn(userName, expectedUserName);
+        checkExactTextIn(userName, expectedUserName);
     }
 
     @Step("Ввести в поле поиска значения {dessertName}")
