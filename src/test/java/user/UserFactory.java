@@ -5,22 +5,37 @@ import utils.PropertyReader;
 public class UserFactory {
 
     public static User withCorrectCredantials() {
-        return new User(PropertyReader.getProperty("correct.login"), PropertyReader.getProperty("correct.password"));
+        return User.builder()
+                .login(PropertyReader.getProperty("correct.login"))
+                .password(PropertyReader.getProperty("correct.password"))
+                .build();
     }
 
     public static User withIncorrectLogin() {
-        return new User(PropertyReader.getProperty("incorrect.login"), PropertyReader.getProperty("correct.password"));
+        return User.builder()
+                .login(PropertyReader.getProperty("incorrect.login"))
+                .password(PropertyReader.getProperty("correct.password"))
+                .build();
     }
 
     public static User withEmptyLogin() {
-        return new User("", PropertyReader.getProperty("correct.password"));
+        return User.builder()
+                .login("")
+                .password(PropertyReader.getProperty("correct.password"))
+                .build();
     }
 
     public static User withEmptyPassword() {
-        return new User(PropertyReader.getProperty("correct.login"), "");
+        return User.builder()
+                .login(PropertyReader.getProperty("correct.login"))
+                .password("")
+                .build();
     }
 
     public static User withEmptyCredantials() {
-        return new User("", "");
+        return User.builder()
+                .login("")
+                .password("")
+                .build();
     }
 }
