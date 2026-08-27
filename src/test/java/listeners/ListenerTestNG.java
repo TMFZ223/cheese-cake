@@ -13,42 +13,31 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class ListenerTestNG implements IRetryAnalyzer, ITestListener {
-    private final int MAX_RETRIES = 3;
-    private static final Set<String> failedTestNames = new HashSet<>();
+    private final int maxRetries = 3;
     private int count = 0;
 
     @Override
     public boolean retry(ITestResult result) {
-        if (count < MAX_RETRIES) {
+        if (count < maxRetries) {
             count++;
             return true;
         }
         return false;
     }
 
-    private void addToFailedSet(ITestResult result) {
-        String testClass = result.getTestClass().getName();
-        String testName = result.getName();
-        String testToWrite = String.format("--tests %s.%s", testClass, testName);
-        failedTestNames.add(testToWrite);
-    }
-
     @Override
     public void onTestFailure(ITestResult result) {
         System.out.printf("FAILED TEST %s Duration: %ss %n", result.getName(),
                 getExecutionTime(result));
-        addToFailedSet(result);
     }
 
     @Override
     public void onTestSkipped(ITestResult result) {
         System.out.printf("SKIPING TEST %s %n", result.getName());
-        addToFailedSet(result);
     }
 
     @Override
     public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
-        addToFailedSet(result);
     }
 
     @Override
