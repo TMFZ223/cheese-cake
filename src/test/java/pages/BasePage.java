@@ -14,27 +14,21 @@ public interface BasePage {
     public static String CLASS_PATTERN = "[class='%s']";
 
     default void clickIn(SelenideElement element) {
-        element.highlight().click();
-        takeScreenshot();
+        element.scrollIntoCenter().click();
     }
 
     default void setValueIn(SelenideElement element, String value) {
-        element.highlight().setValue(value);
-        takeScreenshot();
+        element.setValue(value);
     }
 
     default void checkExactTextIn(SelenideElement element, String text) {
-        element.highlight()
-                .shouldBe(visible)
+        element.shouldBe(visible)
                 .shouldHave(exactTextCaseSensitive(text));
-        takeScreenshot();
     }
 
     default void checkSizeIn(ElementsCollection elements) {
         elements.shouldBe(sizeGreaterThanOrEqual(1));
-        for (SelenideElement element : elements) {
-            element.shouldBe(visible).highlight();
-        }
+        elements.forEach(element -> element.shouldBe(visible));
     }
 
     @Attachment(value = "screenshot", type = "image/png")
